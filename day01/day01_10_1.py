@@ -20,8 +20,10 @@ def get_movie_link():
     for num, i in enumerate(link_list):
         file = urllib.request.urlopen("http://www.dytt8.net" + i[0])
         data = file.read()
-        ret = re.findall(r'.*><a href="(.*)">', data.decode("GBK", "ignore"))
-        film_link[i[1]] = ret[0]
+        #print(data)
+        ret = re.findall(r'.*><a href="([^magnet:?xt=].*)">', data.decode("GBK", "ignore"))
+        print(ret)
+        film_link[i[1]] = ret[1]
         print("已经加载电影数量%d" % num)
 
     return film_link
