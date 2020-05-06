@@ -7,9 +7,9 @@ Author: Allen
 
 from pymysql import connect
 from PyQt5.QtWidgets import QApplication,QMainWindow,QAction
-from RegisterWidget import RegisterWidget
-from LoginWidget import LoginWidget
-from IndexWidget import IndexWidget
+from register_widget import RegisterWidget
+from login_widget import LoginWidget
+from index_widget import IndexWidget
 import sys
 
 class StuSystem:
@@ -33,7 +33,7 @@ class StuSystem:
         self.show_index()
 
         self.main_window.show()
-        sys.exit()
+        sys.exit(app.exec())
 
     def show_index(self):
         print("显示主要功能页")
@@ -49,7 +49,7 @@ class StuSystem:
     def show_register(self):
         print("显示注册页面")
         register_widget = RegisterWidget()
-        register_widget.register_success.connect(self.show_index)
+        register_widget.register_success.connect(self.show_login)
         self.main_window.setCentralWidget(register_widget)
 
     def create_db(self):

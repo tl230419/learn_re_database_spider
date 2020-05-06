@@ -25,7 +25,7 @@ class LoginWidget(QWidget):
         font.setBold(True)
         label.setFont(font)
         vbox.addWidget(label)
-        hbox.addWidget(vbox)
+        hbox.addLayout(vbox)
 
         form_layout = QFormLayout()
 
@@ -40,25 +40,27 @@ class LoginWidget(QWidget):
         login_btn.clicked.connect(self.login)
         form_layout.addRow("", login_btn)
 
-        vbox.addWidget(form_layout)
+        vbox.addLayout(form_layout)
         hbox.addStretch()
+        print("login inited.")
 
     def login(self):
         username = self.username_edit.text()
         password = self.password_edit.text()
 
-        conn = connect(host="localhost", port=3306, user="admin", password="123456")
-        sql = "selet * from user where username=%s and password=%s;"
+        conn = connect(host="localhost", port=3306, user="admin", password="123456", database="itheima")
+        sql = "select * from user where username=%s and password=%s;"
         cursor = conn.cursor()
         ret = cursor.execute(sql, [username, password])
-        conn.commit()
 
-        if ret == 1:
+        user = cursor.fetchone()
+
+        if user:
             print("登录成功")
             QMessageBox.information(None, '提示', '恭喜你， 登录成功！')
-            self.register_success.emit();
+            self.login_success.emit();
         else:
             QMessageBox.information(None, '提示', '恭喜你， 登录失败，用户名或密码错误！')
-            
+
         cursor.close()
         conn.close()

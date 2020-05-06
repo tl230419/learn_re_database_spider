@@ -25,7 +25,7 @@ class RegisterWidget(QWidget):
         font.setBold(True)
         label.setFont(font)
         vbox.addWidget(label)
-        hbox.addWidget(vbox)
+        hbox.addLayout(vbox)
 
         form_layout = QFormLayout()
 
@@ -43,15 +43,17 @@ class RegisterWidget(QWidget):
         register_btn.clicked.connect(self.register)
         form_layout.addRow("", register_btn)
 
-        vbox.addWidget(form_layout)
+        vbox.addLayout(form_layout)
         hbox.addStretch()
+
+        print("register inited")
 
     def register(self):
         username = self.username_edit.text()
         password = self.password_edit.text()
         nickname = self.nickname_edit.text()
 
-        conn = connect(host="localhost", port=3306, user="admin", password="123456")
+        conn = connect(host="localhost", port=3306, user="admin", password="123456", database="itheima")
         sql = "insert into user values(null, %s, %s, %s)"
         cursor = conn.cursor()
         ret = cursor.execute(sql, [username, password, nickname])
@@ -60,7 +62,7 @@ class RegisterWidget(QWidget):
         if ret == 1:
             print("注册成功")
             QMessageBox.information(None, '提示', '恭喜你， 注册成功！')
-            self.register_success.emit();
+            self.register_success.emit()
         else:
             print("注册失败！")
 
