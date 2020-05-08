@@ -58,9 +58,9 @@ class LoginWidget(QWidget):
         if user:
             print("登录成功")
             QMessageBox.information(None, '提示', '恭喜你， 登录成功！')
-            self.login_success.emit();
+            self.login_success.emit()
         else:
-            QMessageBox.information(None, '提示', '恭喜你， 登录失败，用户名或密码错误！')
+            QMessageBox.information(None, '提示', '登录失败，用户名或密码错误！')
 
         cursor.close()
         conn.close()

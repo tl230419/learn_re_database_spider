@@ -8,6 +8,7 @@ Author: Allen
 from PyQt5.QtWidgets import *
 from PyQt5.QtSql import QSqlTableModel,QSqlDatabase
 from PyQt5.QtCore import Qt
+import ctypes
 
 class IndexWidget(QWidget):
     def __init__(self):
@@ -38,6 +39,8 @@ class IndexWidget(QWidget):
         self.table_view = QTableView()
         hbox.addWidget(self.table_view)
 
+        #ctypes.windll.LoadLibrary('D:/Program Files/mysql-8.0.20-winx64/lib/libmysql.dll')
+        print("可用数据库驱动：", QSqlDatabase.drivers())
         db = QSqlDatabase.addDatabase("QMYSQL")
         db.setHostName("localhost")
         db.setPort(3306)
@@ -45,7 +48,11 @@ class IndexWidget(QWidget):
         db.setPassword("123456")
         db.setDatabaseName("itheima")
 
-        db.open()
+        if db.open():
+            print("打开成功")
+        else:
+            print("打开失败：", db.lastError().text())
+            return
 
         self.table_model = QSqlTableModel(db=db)
         self.table_model.setTable("student")
@@ -57,10 +64,11 @@ class IndexWidget(QWidget):
         self.table_model.setHeaderData(3, Qt.Horizontal, "性别")
 
         self.table_view.setModel(self.table_model)
+        print("index inited.")
 
     def query_db(self):
-        print(self.table_model.lastError().text())
         self.table_model.select()
+        print(self.table_model.lastError().text())
 
     def add(self):
         self.table_model.insertRow(self.table_model.rowCount())
