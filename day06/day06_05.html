@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>综合案例</title>
+</head>
+<body>
+<!--- 创建一个8行的表格
+    - 第1行:定义一个img
+    - 第2行: 嵌套1行3列的表格
+    - 第3行: 嵌套1行9列的表格
+    - 第4行: 定义一个img
+    - 第5行:嵌套3行4列表格, 需要进行单元格合并
+    - 第6行:嵌套3行4列表格, 需要进行单元格合并
+    - 第7行: 定义一个img
+    - 第8行: 居中, 定义文字
+-->
+
+<!--table>tr*8>td tab-->
+<table  width="98%" align="center">
+    <!--第1行:定义一个img-->
+    <tr>
+        <td width="100%" height="100px">
+            <img src="./img/top_banner.jpg" width="100%" height="100%">
+        </td>
+    </tr>
+    <!--第2行: 嵌套1行3列的表格-->
+    <tr>
+        <td width="100%" height="100px">
+            <table width="100%" height="100px">
+                <tr>
+                    <td>
+                        <img src="./img/logo.jpg">
+                    </td>
+                    <td>
+                        <img src="./img/search.png"/>
+                    </td>
+                    <td>
+                        <img src="./img/hotel_tel.png"/>
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+
+    <!--第3行: 嵌套1行9列的表格-->
+    <tr>
+        <td width="100%" height="40px">
+            <table width="100%" height="40px">
+
+                <tr bgcolor="#FFC900" align="center">
+                    <td><a href="#"><font color="black">首页</font></a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                    <td><a href="#">首页</a></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+
+    <!-- 第4行: 定义一个img-->
+    <tr>
+        <td width="100%" height="300px">
+            <img src="./img/banner_1.jpg" width="100%" height="100%"/>
+        </td>
+    </tr>
+
+    <!--第5行:嵌套3行4列表格, 需要进行单元格合并-->
+    <tr>
+        <td width="100%" height="550px">
+            <table width="100%" height="550px" >
+                <tr>
+                    <td colspan="4" height="50px">
+                        <img src="./img/icon_6.jpg"/>国内游
+                    </td>
+
+                </tr>
+                <tr>
+                    <td rowspan="2" width="25%" height="500px">
+                        <img src="./img/guonei_1.jpg" width="100%" height="100%"/>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_1.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_2.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_3.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_1.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_2.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_3.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+
+    <!--第6行:嵌套3行4列表格, 需要进行单元格合并-->
+    <tr>
+        <td width="100%" height="550px">
+            <table width="100%" height="550px">
+                <tr>
+                    <td colspan="4" height="50px">
+                        <img src="./img/icon_6.jpg"/>国内游
+                    </td>
+
+                </tr>
+                <tr>
+                    <td rowspan="2" width="25%" height="500px">
+                        <img src="./img/guonei_1.jpg" width="100%" height="100%"/>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_1.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_2.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_3.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_1.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_2.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+
+                    </td>
+                    <td align="center" width="25%" height="250px">
+                        <img src="./img/jiangxuan_3.jpg"/>
+                        <p>上海直飞三亚5天4晚自由行(春节预售...</p>
+                        <p><font color="red">¥899</font></p>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+
+    <!--第7行: 定义一个img-->
+    <tr>
+        <td width="100%" height="80px">
+            <img src="./img/footer_service.png" width="100%" height="100%">
+        </td>
+    </tr>
+    <!--第8行: 居中, 定义文字-->
+    <tr>
+        <td align="center" width="100%">
+            <font color="gray" size="2">江苏传智播客教育科技股份有限公司 版权所有Copyright 2006-2018, All Rights Reserved 苏ICP备16007882</font>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
