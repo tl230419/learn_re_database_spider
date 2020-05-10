@@ -28,8 +28,8 @@ def test03():
 
 def test04():
     qtv,qtk = test03()
-    print(qtv)
-    print(qtk)
+    #print(qtv)
+    #print(qtk)
 
     text = input("请输入你要翻译的文本：")
     print(text)
@@ -43,12 +43,12 @@ def test04():
         "qtk": qtk
     }
 
-    data = urllib.parse.urlencode(data).encode()
-    print("data:\r\n", data)
+    data = urllib.parse.urlencode(data).encode('utf-8')
+    #print("data:\r\n", data)
 
     headers = {
-        "Accept": "application/json, text/javascript, */*； q=0.01",
-        "Content-Type": "application/x-www-form-urlencoded: charset=UTF-8",
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         "Origin": "https://fanyi.qq.com",
         "Referer": "https://fanyi.qq.com/",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
@@ -61,7 +61,7 @@ def test04():
 
     content = resp.read().decode()
     content = json.loads(content)
-    print(content)
+    #print(content)
     target_text = content["translate"]["records"][0]["targetText"]
     print("翻译结果为：", target_text)
 
