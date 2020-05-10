@@ -14,7 +14,7 @@ def generate_content():
 
     result = ""
     for movie in movies:
-        ret = re.search("《(.*)》",movie[2])
+        ret = re.search("《(.*)》", movie[2])
         result += str%(movie[1], ret.group(1), utils.create_thunder_url(movie[3]))
 
     return result

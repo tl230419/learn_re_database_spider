@@ -6,8 +6,9 @@ def create_db():
     cursor = conn.cursor()
     cursor.execute("create database if not exists itmovie")
     cursor.execute("use itmovie")
-    cursor.execute("create table if not exists t_movie(id int primary key auto_increment, img_url varchar(255), title varchar(100), download_url varchar(100)")
+    cursor.execute("create table if not exists t_movie(id int primary key auto_increment, img_url varchar(255), title varchar(100), download_url varchar(100))")
     cursor.close()
+    print("create db...")
 
 def save(detail):
     conn = pymysql.connect(host="localhost", port=3306, database="itmovie", user="root", password="123456")

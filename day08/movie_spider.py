@@ -38,10 +38,10 @@ class MovieSpider():
 
     def parse_item(self, response):
         response.encoding = "gbk"
-        name = re.search('<h1><font color=#07519a>(.*)</font></h1>',response.text).group(1)
-        icon = re.search('<br /><br />\s*<img.*?src="(.*?)".*?/>\s*<br /><br />',response.text).group(1)
+        name = re.search('<h1><font color=#07519a>(.*)</font></h1>', response.text).group(1)
+        icon = re.search('<br /><br />\s*<img.*?src="(.*?)".*?/>\s*<br /><br />', response.text).group(1)
         print(name + "=====" + icon)
-        url = re.search('bgcolor="#fdfddf"><a href="(.*?)">.*?</a>',response.text).group(1)
+        url = re.search('bgcolor="#fdfddf"><a href="(.*?)">.*?</a>', response.text).group(1)
 
         return {"name":name, "icon":icon, "url":url}
 

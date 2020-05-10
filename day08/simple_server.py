@@ -1,4 +1,5 @@
 import socket
+import generate_movie_page
 
 def request_handler(new_client_socket):
     req_data = new_client_socket.recv(4096)
@@ -6,14 +7,16 @@ def request_handler(new_client_socket):
     print("打印请求的内容：", req_data)
 
     resp_line_and_headers = """
-        HTTP/1.1 200 OK
-        Server: one new bility server
-        Content-Type: text/html; charset=UTF-8
-        Connection: keep-alive
-        Accept-Ranges: bytes
-    """
+HTTP/1.1 200 OK
+Server: one new bility server
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Accept-Ranges: bytes
 
-    resp_body = "<h1>这是来自html页面的数据</h1>"
+"""
+
+    #resp_body = "<h1>这是来自html页面的数据</h1>"
+    resp_body = generate_movie_page.fill_template()
 
     resp_content = resp_line_and_headers\
                     + "\r\n"\
