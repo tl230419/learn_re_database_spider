@@ -1,7 +1,7 @@
 import requests
 import re
 import threading
-from models import Movie, Session
+import models
 
 class MovieSpider():
     start_url = "http://www.ygdy8.net/html/gndy/dyzz/list_23_1.html"
@@ -25,12 +25,9 @@ class MovieSpider():
         t.start()
 
     def pipeline(self, item):
-        movie = Movie()
-        movie.name = item["name"]
-        movie.icon = item["icon"]
-        movie.url = item["url"]
+        movie = models.Movie(title=item["name"], img_url=item["icon"], download_url=item["url"])
 
-        session = Session()
+        session = models.Session()
         session.add(movie)
         session.commit()
         session.close()
@@ -38,13 +35,34 @@ class MovieSpider():
 
     def parse_item(self, response):
         response.encoding = "gbk"
-        name = re.search('<h1><font color=#07519a>(.*)</font></h1>', response.text).group(1)
-        icon = re.search('<br /><br />\s*<img.*?src="(.*?)".*?/>\s*<br /><br />', response.text).group(1)
-        print(name + "=====" + icon)
-        url = re.search('bgcolor="#fdfddf"><a href="(.*?)">.*?</a>', response.text).group(1)
+        ret = re.search('<h1><font color=#07519a>(.*)</font></h1>', response.text)
+        name = None
+        if ret:
+            name = ret.group(1)
+        else:
+            print("No name")
+
+        ret = re.search('<img border="0" src="(.*?)"', response.text)
+        icon = None
+        if ret:
+            icon = ret.group(1)
+        else:
+            ret = re.search('<img border="0" alt="" src="(.*?)"', response.text)
+            if ret:
+                icon = ret.group(1)
+            else:
+                print("No icon")
+                icon = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2535338893.jpg"
+
+        ret = re.search(r'bgcolor="#fdfddf"><a href=\"(.*)\">(\1)</a>', response.text)
+        url = None
+        if ret:
+            url = ret.group(1)
+        else:
+            print("No url")
 
         return {"name":name, "icon":icon, "url":url}
 
 
 if __name__ == '__main__':
-    MovieSpider.run()
+    MovieSpider().run()
