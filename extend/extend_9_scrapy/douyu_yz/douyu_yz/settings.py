@@ -66,6 +66,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'douyu_yz.pipelines.DouyuYzPipeline': 300,
+   'douyu_yz.pipelines.YzImagePileline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
